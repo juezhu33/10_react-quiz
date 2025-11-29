@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# React Quiz Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+一个基于 React 构建的交互式测验应用程序，用于测试用户对 React 知识的掌握程度。
 
-## Available Scripts
+## 项目简介
 
-In the project directory, you can run:
+这是一个完整的 React 测验应用程序，具有现代化的 UI 设计和流畅的用户体验。用户可以回答有关 React 框架的各种问题，并获得实时反馈和最终成绩评估。
 
-### `npm start`
+该应用程序展示了 React 开发中的多种重要概念和最佳实践，包括：
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 组件化开发
+- 状态管理和 useReducer Hook 的使用
+- useEffect 进行副作用处理
+- 自定义组件的创建和组合
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 功能特点
 
-### `npm test`
+- 📝 **问答测验**: 回答关于 React 框架的多项选择题
+- ⏱️ **倒计时**: 每个测验都有时间限制，增加挑战性
+- 🏆 **得分系统**: 根据正确答案计算分数，并保存最高分记录
+- 🎨 **响应式设计**: 在不同设备尺寸上都能良好显示
+- 🔄 **重新开始**: 测验结束后可以选择重新开始
+- 📊 **进度追踪**: 显示当前答题进度和累计得分
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 技术栈
 
-### `npm run build`
+- [React](https://reactjs.org/) (v19.2.0)
+- [Create React App](https://create-react-app.dev/) 构建工具
+- [JSON Server](https://github.com/typicode/json-server) 用于模拟 REST API
+- Vanilla CSS (无额外 CSS 框架)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 项目结构
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── components/     # React 组件
+├── data/           # 测验问题数据
+├── index.css       # 全局样式
+└── index.js        # 应用入口文件
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 安装与运行
 
-### `npm run eject`
+### 前提条件
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+确保你的系统已经安装了 [Node.js](https://nodejs.org/) 和 npm。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 安装步骤
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. 克隆或下载此仓库
+2. 安装依赖包：
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm install
+```
 
-## Learn More
+### 运行应用
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+此应用需要同时运行前端和模拟服务器：
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 启动模拟服务器 (端口 9000)：
 
-### Code Splitting
+```bash
+npm run server
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. 在另一个终端中启动前端开发服务器 (端口 3000)：
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+应用将在浏览器中自动打开，地址为 http://localhost:3000
 
-### Making a Progressive Web App
+### 构建生产版本
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+要创建生产优化版本，请运行：
 
-### Advanced Configuration
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+构建文件将位于 `build/` 目录中。
 
-### Deployment
+## 测验数据
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+测验问题存储在 [src/data/questions.json](src/data/questions.json) 文件中，采用以下格式：
 
-### `npm run build` fails to minify
+```json
+{
+  "questions": [
+    {
+      "question": "问题文本",
+      "options": ["选项1", "选项2", "选项3", "选项4"],
+      "correctOption": 1, // 正确选项的索引 (从0开始)
+      "points": 10 // 该问题的分数
+    }
+  ]
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+你可以轻松地修改此文件来添加更多问题或更改现有问题。
+
+## 可用脚本
+
+在项目目录中，你可以运行以下命令：
+
+- `npm start`: 启动开发服务器
+- `npm run server`: 启动 JSON Server 来提供测验数据
+- `npm test`: 启动测试运行器（处于监听模式）
+- `npm run build`: 构建生产版本
+- `npm run eject`: 弹出配置（注意：此操作不可逆！）
+
+## 学习要点
+
+通过研究此项目源码，你可以学习到：
+
+1. 如何使用 useReducer 管理复杂的状态逻辑
+2. 如何组织大型 React 应用的组件结构
+3. 如何实现计时器功能并与应用状态集成
+4. 如何处理异步数据获取
+5. 如何创建可重用和可组合的 React 组件
